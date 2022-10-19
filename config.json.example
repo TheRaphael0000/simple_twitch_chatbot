@@ -1,0 +1,7 @@
+{
+    "channel": "",
+    "client_id": "",
+    "redirect_uri": "",
+    "scope": "chat:edit+chat:read",
+    "access_token": "oauth:"
+}
