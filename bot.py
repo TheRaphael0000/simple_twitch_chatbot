@@ -75,6 +75,7 @@ def update_messages():
 
 
 def messages_watchdog():
+    update_messages()
     while True:
         time.sleep(1)
         update_messages()
