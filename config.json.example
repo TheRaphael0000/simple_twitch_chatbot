@@ -3,5 +3,7 @@
     "client_id": "",
     "redirect_uri": "",
     "scope": "chat:edit+chat:read",
-    "access_token": "oauth:"
+    "access_token": "oauth:",
+    "max_messages": 5,
+    "max_time": 20
 }
