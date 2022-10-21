@@ -5,6 +5,7 @@ from columnar import columnar
 import datetime
 import threading
 import time
+from termcolor import colored, cprint
 
 config = json.load(open("config.json", "r"))
 
@@ -14,7 +15,7 @@ chat = twitch.Chat(channel=f"#{config['channel']}",
 messages = []
 max_messages = config['max_messages']
 max_time = datetime.timedelta(seconds=config['max_time'])
-previous_table = ""
+previous_table = None
 
 def commands_handler(message):
     commands = json.load(open("commands.json", "r"))
@@ -32,19 +33,18 @@ def show_messages():
     global previous_table
 
     if len(messages) > 0:
-        data = [[m.sender, m.text] for m, date in messages]
+        data = [[colored(m.sender, "magenta"), m.text] for m, date in messages]
         table = columnar(data, headers=None, justify=["r", "l"], no_borders=True)
     else:
         table = ""
 
     if previous_table != table:
         os.system('cls')
-        print(table)
+        cprint(table)
     previous_table = table
 
 
 def messages_handler(message):
-    print(message)
     now = datetime.datetime.now()
     messages.append((message, now))
     update_messages()

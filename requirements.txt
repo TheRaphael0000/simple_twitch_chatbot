@@ -1,2 +1,3 @@
 twitch-python
 columnar
+termcolor
