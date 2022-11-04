@@ -1,12 +1,3 @@
-html {
-    font-family: "Consolas";
-    size: 0.6em;
-}
-
-body {
-    background-color: black;
-}
-
 .user {
     color: magenta;
     text-align: right;

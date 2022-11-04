@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>twitch toolbox</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <head>
+        <link rel="stylesheet"
+              href="{{ url_for('static', filename='global.css') }}"/>
+        {% block head %}
+        {% endblock head %}
+    </head>
+    <body>
+        <script>
+        let oauth = "{{config['oauth']}}"
+        let channel = "{{config['channel']}}"
+        </script>
+        {% block body %}
+        {% endblock body %}
+    </body>
+</html>

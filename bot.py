@@ -9,4 +9,9 @@ app = Flask(__name__)
 
 @app.route("/chat")
 def chat():
-    return render_template('chat.html', oauth=config["oauth"], channel=config["channel"])
+    return render_template('chat.html', config=config)
+
+
+@app.route("/events")
+def events():
+    return render_template('events.html', config=config)
