@@ -1,7 +1,10 @@
 html {
     font-family: "Consolas";
-    background-color: black;
     size: 0.6em;
+}
+
+body {
+    background-color: black;
 }
 
 .user {
@@ -11,8 +14,13 @@ html {
 
 .text {
     color: white;
+    padding-left: 5px;
+}
+
+#chat {
+    border-collapse: collapse;
 }
 
 .message {
-    
+    background-color: rgba(0, 0, 0, 0.9);
 }
