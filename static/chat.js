@@ -52,7 +52,7 @@ function parse_at(at_msg) {
     return infos
 }
 
-function parse_message(message) {
+function parse_message(e, message) {
     console.log(message)
     let commands = message.split(" ")
 
@@ -66,6 +66,10 @@ function parse_message(message) {
         let text = commands.slice(4, commands.length).join(" ").substring(1)
         add_message(infos, text)
     }
+
+    if(commands[0] == "PING") {
+        e.currentTarget.send(message.replace("PING", "PONG"))
+    }
 }
 
 
@@ -73,7 +77,7 @@ function message(e) {
     let messages = e.data.split("\r\n")
     for (let message of messages) {
         if (message.length > 0)
-            parse_message(message)
+            parse_message(e, message)
     }
 
 }
