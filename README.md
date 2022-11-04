@@ -31,5 +31,5 @@ you can enter your commands in commands.json
 # run
 
 ```
-python bot.py
+flask --app bot run
 ```

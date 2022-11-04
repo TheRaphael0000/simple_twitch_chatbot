@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>test</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}"/>
+    </head>
+    <body>
+        <table id="chat">
+        </table>
+        <script>
+        let oauth = "{{oauth}}"
+        let channel = "{{channel}}"
+        </script>
+        <script src="static/chat.js" type="module"></script>
+    </body>
+</html>

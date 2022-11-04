@@ -1,0 +1,18 @@
+html {
+    font-family: "Consolas";
+    background-color: black;
+    size: 0.6em;
+}
+
+.user {
+    color: magenta;
+    text-align: right;
+}
+
+.text {
+    color: white;
+}
+
+.message {
+    
+}
