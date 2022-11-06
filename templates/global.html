@@ -12,8 +12,7 @@
     </head>
     <body>
         <script>
-        let oauth = "{{config['oauth']}}"
-        let channel = "{{config['channel']}}"
+        let config = {{ config | safe }}
         </script>
         {% block body %}
         {% endblock body %}

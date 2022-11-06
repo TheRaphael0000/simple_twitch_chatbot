@@ -9,11 +9,11 @@ function add_message(infos, text) {
     let date = Date.now()
 
     let tr = document.createElement("tr")
-    tr.classList.add("message", "show")
+    tr.classList.add("message", "show", "bg")
     tr.dataset.date = date
 
     let user_td = document.createElement("td")
-    user_td.classList.add("user")
+    user_td.classList.add("user", "accent")
     user_td.innerHTML = infos["display-name"]
 
     let text_td = document.createElement("td")
@@ -24,7 +24,7 @@ function add_message(infos, text) {
     tr.appendChild(text_td)
     chat.appendChild(tr)
 
-    new Typed('#text_'+id, {strings: [text], typeSpeed: 10})
+    new Typed('#text_' + id, { strings: [text], typeSpeed: 10, showCursor: false })
     id++
 
     remove_message()
@@ -89,9 +89,9 @@ function message(e) {
 function open(e) {
     let connection = e.currentTarget
     connection.send('CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands')
-    connection.send('PASS oauth:' + oauth)
-    connection.send('NICK theraphael0000')
-    connection.send('JOIN #' + channel)
+    connection.send('PASS oauth:' + config['oauth'])
+    connection.send('NICK ' + config['channel'])
+    connection.send('JOIN #' + config['channel'])
 }
 
 let watcher = setInterval(remove_message, 500)

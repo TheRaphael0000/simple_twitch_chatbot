@@ -1,8 +1,25 @@
 {% extends "global.html" %}
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='events.css') }}"/>
 {% endblock head %}
 {% block body %}
-    
+    <style>
+    #notification {
+        padding: 10px 20px;
+        display: block;
+        opacity: 1;
+        transition: opacity 3s;
+        text-align: center;
+    }
+
+    #notification.hidden {
+        opacity: 0;
+    }
+    </style>
+    <audio id="sfx">
+        <source src="{{ url_for('static', filename='sfx.wav') }}" type="audio/wav"/>
+    </audio>
+    <div id="notification" class="hidden bg">
+        Merci <span id="follower" class="accent"></span> pour le follow
+    </div>
     <script src="static/events.js" type="module"></script>
 {% endblock body %}

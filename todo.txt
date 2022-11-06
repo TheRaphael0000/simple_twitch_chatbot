@@ -1,3 +1,1 @@
 faire une queue pour jouer
-et ajouter les alertes
-mettre l'arene à 3 max

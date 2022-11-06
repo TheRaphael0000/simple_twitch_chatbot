@@ -1,0 +1,22 @@
+{% extends "global.html" %}
+{% block head %}
+{% endblock head %}
+{% block body %}
+  <style>
+    #date_time {
+      padding: 0px 4px;
+    }
+  </style>
+  <span id="date_time" class="bg"></span>
+  <script>
+      let date_time = document.querySelector("#date_time");
+
+      function update() {
+        let d = new Date(); 
+        date_time.innerHTML = d.toLocaleString();
+      }
+
+      setInterval(update, 100);
+
+  </script>
+{% endblock body %}

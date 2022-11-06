@@ -1,8 +1,20 @@
 {% extends "global.html" %}
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}"/>
 {% endblock head %}
 {% block body %}
+    <style>
+        .user {
+            text-align: right;
+        }
+
+        #chat {
+            border-collapse: collapse;
+        }
+
+        .message td {
+            padding: 3px 10px;
+        }
+    </style>
     <table id="chat">
     </table>
     <script src="static/chat.js" type="module"></script>
