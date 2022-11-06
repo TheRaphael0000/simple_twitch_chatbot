@@ -3,6 +3,7 @@ const websocket = new WebSocket("wss://irc-ws.chat.twitch.tv:443")
 
 let max_messages = 10
 let max_time = 15 * 1000
+let id = 0
 
 function add_message(infos, text) {
     let date = Date.now()
@@ -16,12 +17,15 @@ function add_message(infos, text) {
     user_td.innerHTML = infos["display-name"]
 
     let text_td = document.createElement("td")
+    text_td.id = "text_" + id
     text_td.classList.add("text")
-    text_td.innerHTML = text
 
     tr.appendChild(user_td)
     tr.appendChild(text_td)
     chat.appendChild(tr)
+
+    new Typed('#text_'+id, {strings: [text], typeSpeed: 10})
+    id++
 
     remove_message()
 }
@@ -67,7 +71,7 @@ function parse_message(e, message) {
         add_message(infos, text)
     }
 
-    if(commands[0] == "PING") {
+    if (commands[0] == "PING") {
         e.currentTarget.send(message.replace("PING", "PONG"))
     }
 }

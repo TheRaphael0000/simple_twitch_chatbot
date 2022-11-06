@@ -6,7 +6,21 @@
 .text {
     color: white;
     padding-left: 5px;
+    overflow: hidden;
+    margin: 0 auto;
+    animation: typing 3.5s steps(40, end),
 }
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
 
 #chat {
     border-collapse: collapse;
