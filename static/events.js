@@ -34,13 +34,15 @@ function subscribe_to_events(message) {
         .then((data) => console.log(data))
 }
 
-function channel_follow(message) {
-    follower.innerHTML = message["payload"]["event"]["user_name"]
-    notification.classList.remove("hidden")
-    sfx.addEventListener("ended", function () {
-        notification.classList.add("hidden")
-    })
-    sfx.play()
+function notification_callback(message) {
+    if (message.metadata.subscription_type == "channel.follow") {
+        follower.innerHTML = message["payload"]["event"]["user_name"]
+        notification.classList.remove("hidden")
+        sfx.addEventListener("ended", function () {
+            notification.classList.add("hidden")
+        })
+        sfx.play()
+    }
 }
 
 let lookup = {
@@ -48,7 +50,7 @@ let lookup = {
     "session_keepalive": () => { },
     "session_reconnect": () => { },
     "revocation": () => { },
-    "channel.follow": channel_follow,
+    "notification": notification_callback,
 }
 
 function message(event) {
