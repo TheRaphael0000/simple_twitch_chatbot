@@ -76,7 +76,7 @@ function connect() {
 connect()
 
 if (new URL(window.location.href).hash == "#test") {
-    channel_follow({
+    notification_callback({
         "metadata": {
             "message_type": "notification",
             "subscription_type": "channel.follow",
