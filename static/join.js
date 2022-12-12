@@ -1,4 +1,4 @@
-let players = ["a"]
+let players = []
 
 
 function removePlayer(p) {
