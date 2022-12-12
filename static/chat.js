@@ -4,12 +4,12 @@ let max_messages = 10
 let max_time = 15 * 1000
 let id = 0
 
-
 function add_message(channel, tags, message, self) {
     let date = Date.now()
+    console.log(tags)
 
     let tr = document.createElement("tr")
-    tr.classList.add("message", "show", "bg")
+    tr.classList.add("message", "show")
     tr.dataset.date = date
 
     let user_td = document.createElement("td")
@@ -24,7 +24,9 @@ function add_message(channel, tags, message, self) {
     tr.appendChild(text_td)
     chat.appendChild(tr)
 
-    new Typed('#text_' + id, { strings: [message], typeSpeed: 10, showCursor: false })
+    let message_with_emotes = getMessageHTML(message, tags)
+
+    new Typed('#text_' + id, { strings: [message_with_emotes], typeSpeed: 10, showCursor: false })
     id++
 
     remove_message()
@@ -43,6 +45,44 @@ function remove_message() {
         }
         count += 1
     }
+}
+
+
+/* https://www.stefanjudis.com/blog/how-to-display-twitch-emotes-in-tmi-js-chat-messages */
+function getMessageHTML(message, { emotes }) {
+    if (!emotes) return message;
+
+    // store all emote keywords
+    // ! you have to first scan through 
+    // the message string and replace later
+    const stringReplacements = [];
+
+    // iterate of emotes to access ids and positions
+    Object.entries(emotes).forEach(([id, positions]) => {
+        // use only the first position to find out the emote key word
+        const position = positions[0];
+        const [start, end] = position.split("-");
+        const stringToReplace = message.substring(
+            parseInt(start, 10),
+            parseInt(end, 10) + 1
+        );
+
+        stringReplacements.push({
+            stringToReplace: stringToReplace,
+            replacement: `<img src="https://static-cdn.jtvnw.net/emoticons/v1/${id}/3.0">`,
+        });
+    });
+
+    // generate HTML and replace all emote keywords with image elements
+    const messageHTML = stringReplacements.reduce(
+        (acc, { stringToReplace, replacement }) => {
+            // obs browser doesn't seam to know about replaceAll
+            return acc.split(stringToReplace).join(replacement);
+        },
+        message
+    );
+
+    return messageHTML;
 }
 
 

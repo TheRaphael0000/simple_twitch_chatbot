@@ -21,3 +21,8 @@ def events():
 @app.route("/time")
 def time():
     return render_template('time.html', config=config)
+
+
+@app.route("/join")
+def join():
+    return render_template('join.html', config=config)

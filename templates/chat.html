@@ -1,6 +1,5 @@
 {% extends "global.html" %}
 {% block head %}
-    <script src="static/tmi.min.js"></script>
 {% endblock head %}
 {% block body %}
     <style>
@@ -12,11 +11,15 @@
             border-collapse: collapse;
         }
 
+        #chat img {
+            height: 1em;
+        }
+
         .message td {
             padding: 3px 10px;
         }
     </style>
-    <table id="chat">
+    <table id="chat" class="bg_v">
     </table>
     <script src="static/chat.js" type="module"></script>
 {% endblock body %}
