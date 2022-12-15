@@ -7,10 +7,20 @@
         <link rel="stylesheet"
               href="{{ url_for('static', filename='global.css') }}"/>
         <script src="static/tmi.min.js"></script>
+        
+        <!-- Typed -->
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+        <!-- React -->
         <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        
+        <!-- Fontawesome -->
+        <link rel="stylesheet"
+              href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+              integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+              crossorigin="anonymous"/>
         {% block head %}
         {% endblock head %}
     </head>

@@ -2,9 +2,17 @@
 {% block head %}
 {% endblock head %}
 {% block body %}
-    <style></style>
+    <style>
+    #root {
+        user-select: none;
+    }
+    #join_lock {
+        margin: 0px 10px;
+        color: fuchsia;
+    }
+    </style>
     <div id="root" class="right bg_h">
-        <h3 class="underline">!join</h3>
+        <h3 class="underline"><span id="join_message">!join</span> <i id="join_lock" class="fa fa-fw fa-lock-open"></i></h3>
         <div id="playerList"></div>
     </div>
     <script src="static/join.js" type="text/babel"></script>

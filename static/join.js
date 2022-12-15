@@ -1,4 +1,8 @@
 let players = []
+let lock = false
+
+let join_lock = document.getElementById("join_lock")
+let join_message = document.getElementById("join_message")
 
 
 function removePlayer(p) {
@@ -27,6 +31,10 @@ render();
 function message(channel, tags, message, self) {
     if (!message.startsWith("!join"))
         return
+
+    if (lock)
+        return
+
     let p = tags["display-name"]
     if (players.includes(p))
         return
@@ -34,6 +42,15 @@ function message(channel, tags, message, self) {
     players.push(p)
     render()
 }
+
+function toggle_lock() {
+    join_lock.classList.toggle("fa-lock-open")
+    join_lock.classList.toggle("fa-lock")
+    lock ^= true
+    join_message.style.display = lock ? "none" : "inline-block"
+}
+
+join_lock.addEventListener("click", toggle_lock)
 
 
 const client = new tmi.Client({
