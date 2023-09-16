@@ -1,5 +1,5 @@
 let ws
-let ws_endpoint = "wss://eventsub-beta.wss.twitch.tv/ws"
+let ws_endpoint = "wss://eventsub.wss.twitch.tv/ws"
 let sfx = document.querySelector("#sfx")
 let notification = document.querySelector("#notification")
 let follower = document.querySelector("#follower")
@@ -24,9 +24,15 @@ function subscribe_to_events(message) {
             mode: 'cors',
             body: JSON.stringify({
                 "type": "channel.follow",
-                "version": "1",
-                "condition": { "broadcaster_user_id": config['user_id'] },
-                "transport": { "method": "websocket", "session_id": message["payload"]["session"]["id"] }
+                "version": "2",
+                "condition": {
+                    "broadcaster_user_id": config['user_id'],
+                    "moderator_user_id": config['user_id']
+                },
+                "transport": {
+                    "method": "websocket",
+                    "session_id": message["payload"]["session"]["id"]
+                }
             })
         }
     )
